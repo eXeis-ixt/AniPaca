@@ -7,6 +7,8 @@ use App\Filament\Resources\MangaResource\RelationManagers;
 use App\Models\Manga;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -28,11 +30,18 @@ class MangaResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title'),
-                TextInput::make('author'),
-                TextInput::make('chapters'),
-                TextInput::make('downloads')->prefix('url')->prefixIcon('heroicon-o-link'),
-                FileUpload::make('image')->image()->imageEditor()->downloadable(),
+                Section::make('Manga Info')->schema([
+                    Group::make()->schema([
+                        TextInput::make('title'),
+                        TextInput::make('author'),
+                        TextInput::make('chapters'),
+                        TextInput::make('downloads')->prefix('url')->prefixIcon('heroicon-o-link'),
+                    ])->columns(2),
+
+
+                    FileUpload::make('image')->image()->imageEditor()->downloadable()->optimize('webp'),
+
+                ])
 
             ]);
     }
