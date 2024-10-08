@@ -16,7 +16,7 @@ is a Bangla manga dowloading site which is mainted and created by the community
 Clone the project
 
 ```bash
-  https://github.com/eXeis-ixt/AniPaca
+  git clone https://github.com/eXeis-ixt/AniPaca
 ```
 
 Go to the project directory
