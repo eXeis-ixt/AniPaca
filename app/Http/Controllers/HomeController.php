@@ -17,4 +17,12 @@ class HomeController extends Controller
         ]);
     }
 
+    public function key(){
+        Artisan::call(KeyGenerateCommand::class, ['--show' => 'true']);
+        return Inertia::render('Key', [
+            'keygen' => Artisan::output(),
+        ]);
+    }
+
+
 }
